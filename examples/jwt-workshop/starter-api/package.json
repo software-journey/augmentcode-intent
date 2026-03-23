@@ -1,0 +1,33 @@
+{
+  "name": "starter-api",
+  "version": "1.0.0",
+  "description": "Wave 3 starter API for the JWT workshop track.",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "test": "node --import tsx --test",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "augmentcode-intent",
+    "jwt",
+    "express",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.5.0",
+    "@types/supertest": "^7.2.0",
+    "supertest": "^7.2.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
