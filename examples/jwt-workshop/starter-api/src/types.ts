@@ -26,6 +26,13 @@ export type ShipmentRecord = {
   priorityNote: string
 }
 
+export type SessionRecord = {
+  id: string
+  createdAt: string
+  expiresAt: string
+  current: boolean
+}
+
 export type AuthenticatedRequest = Request & {
   currentUser: PublicUser
 }

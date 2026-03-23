@@ -6,8 +6,11 @@ import { validateBody } from '../middleware/validate'
 import {
   authenticateUser,
   buildSession,
+  getSessionIdFromRefreshToken,
   getUserByRefreshToken,
+  listSessionsForUser,
   revokeRefreshToken,
+  revokeSessionForUser,
 } from '../services/auth-service'
 import type { AuthenticatedRequest, LoginRequest } from '../types'
 import { loginSchema } from '../validation/auth'
@@ -48,6 +51,7 @@ router.post('/refresh', async (req, res) => {
   const refreshToken = req.cookies.refreshToken as string | undefined
 
   if (!refreshToken) {
+    res.clearCookie('refreshToken', { path: '/' })
     res.status(401).json({ error: 'Refresh token is missing.' })
     return
   }
@@ -55,6 +59,7 @@ router.post('/refresh', async (req, res) => {
   const user = await getUserByRefreshToken(refreshToken)
 
   if (!user) {
+    res.clearCookie('refreshToken', { path: '/' })
     res.status(401).json({ error: 'Invalid refresh token.' })
     return
   }
@@ -84,6 +89,37 @@ router.post('/logout', async (req, res) => {
 
 router.get('/me', requireAuth, (req, res) => {
   res.status(200).json({ user: (req as AuthenticatedRequest).currentUser })
+})
+
+router.get('/sessions', requireAuth, async (req, res) => {
+  const currentRefreshToken = req.cookies.refreshToken as string | undefined
+  const sessions = await listSessionsForUser(
+    (req as AuthenticatedRequest).currentUser.id,
+    currentRefreshToken,
+  )
+
+  res.status(200).json({ sessions })
+})
+
+router.delete('/sessions/:sessionId', requireAuth, async (req, res) => {
+  const currentRefreshToken = req.cookies.refreshToken as string | undefined
+  const currentSessionId = await getSessionIdFromRefreshToken(currentRefreshToken)
+  const sessionId = String(req.params.sessionId)
+  const revoked = await revokeSessionForUser(
+    (req as AuthenticatedRequest).currentUser.id,
+    sessionId,
+  )
+
+  if (!revoked) {
+    res.status(404).json({ error: 'Session not found.' })
+    return
+  }
+
+  if (currentSessionId === sessionId) {
+    res.clearCookie('refreshToken', { path: '/' })
+  }
+
+  res.status(200).json({ ok: true })
 })
 
 export default router
