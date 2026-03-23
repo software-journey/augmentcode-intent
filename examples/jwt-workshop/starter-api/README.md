@@ -1,20 +1,28 @@
-# JWT starter API
+# JWT production-foundations API
 
-This Wave 4 starter turns the JWT workshop spec into a small Express + TypeScript auth flow with a second-step token lifecycle increment.
+This Wave 5 app matures the JWT workshop into a realistic local auth + shipment API.
 
 ## Implemented
 
-- `POST /login` with an in-memory user fixture
-- JWT signing for a successful login
-- refresh-token issuance and a minimal `POST /refresh` flow
-- `GET /me` protected by bearer-token middleware
-- focused tests for login, refresh, and protected-profile behavior
+- SQLite-backed users, refresh tokens, and shipments via Prisma
+- password hashing with `bcryptjs`
+- `POST /auth/login`, `POST /auth/refresh`, `POST /auth/logout`, `GET /auth/me`
+- `httpOnly` refresh-token cookies with revocation on logout/refresh
+- protected `GET /shipments` for the dashboard track
+- request validation and focused backend tests
+
+## Setup
+
+1. Copy `.env.example` to `.env`.
+2. Run `npm install`.
+3. Run `npm run db:migrate -- --name production_foundations`.
+4. Run `npm run db:seed`.
 
 ## Deferred
 
-- signup and password resets
-- logout flows and persistent refresh-token storage
-- persistent storage and production hardening
+- signup and password reset flows
+- advanced refresh-token rotation policies
+- production secret management and deployment configuration
 
 ## Commands
 
@@ -24,4 +32,4 @@ This Wave 4 starter turns the JWT workshop spec into a small Express + TypeScrip
 
 ## Connect back to Wave 2
 
-Start with `../specs/living-spec.md`, then inspect `src/` to see the minimal implementation of that slice.
+Start with `../specs/living-spec.md`, then inspect `src/` and `prisma/` to see how the Wave 5 production foundations build on the earlier learning slices.

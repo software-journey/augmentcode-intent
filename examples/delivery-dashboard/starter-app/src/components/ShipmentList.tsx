@@ -36,8 +36,8 @@ export function ShipmentList({
   if (shipments.length === 0) {
     return (
       <section className="panel empty-state">
-        <h3>No delayed deliveries match the current view.</h3>
-        <p>Switch back to all shipments or add delayed fixture data for another pass.</p>
+        <h3>No shipments match the current view.</h3>
+        <p>Switch back to all shipments or retry once the backend has more data available.</p>
       </section>
     )
   }
