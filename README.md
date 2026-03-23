@@ -1,13 +1,12 @@
-# augmentcode-intent
+# Augmentcode Intent
 
 Learning companion repository for the 8-part dev.to series on building with Augment Code and Intent.
 
 ## Purpose
 
-This repository is the hands-on workspace for the series:
-https://dev.to/wvanheemstra/series/37310
+This repository is the hands-on workspace for the series: [Augmentcode Intent](https://dev.to/wvanheemstra/series/37310)
 
-Wave 1 establishes the learning foundation only: repository structure, episode guides, reusable templates, and practice-track navigation. It does **not** yet include full runnable implementations for the example products.
+Wave 1 established the learning foundation. Wave 2 adds mirrored, track-specific worked artifacts so learners can practice the series in either an auth-focused or dashboard-focused scenario. The repository still does **not** include full runnable implementations for the example products.
 
 ## How to use this repository with the article series
 
@@ -16,6 +15,8 @@ Wave 1 establishes the learning foundation only: repository structure, episode g
 3. Review the concrete artifact for that episode.
 4. Reuse or adapt a template from `templates/`.
 5. Apply the episode's ideas to one of the practice tracks in `examples/`.
+
+For Episodes 2-8, each practice track now contains a concrete artifact chain you can follow from living spec to PR summary.
 
 Treat the repository as a study workbook: the articles explain the concepts, and this repo gives you a place to inspect examples, copy templates, and build your own iterations.
 
@@ -43,22 +44,34 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 
 | Area | Purpose |
 | --- | --- |
-| `episodes/` | Per-episode guides and placeholder learning artifacts |
-| `examples/` | Two practice tracks used across the series |
-| `templates/` | Reusable specs, prompts, verifier checklists, and PR summary scaffolds |
+| episodes/ | Per-episode guides and placeholder learning artifacts |
+| examples/ | Two practice tracks used across the series |
+| templates/ | Reusable specs, prompts, verifier checklists, and PR summary scaffolds |
 
 ## Episode navigation
 
 | Episode | Focus | Primary repo location | Concrete artifact(s) |
 | --- | --- | --- | --- |
-| 1 | Repo overview / learning path | `episodes/01-welcome/` | `episodes/01-welcome/README.md` |
-| 2 | Living spec example/template | `episodes/02-living-spec/` | `episodes/02-living-spec/living-spec-template.md`, `templates/specs/episode-spec-template.md` |
-| 3 | Coordinator/specialist handoff example | `episodes/03-coordinator-specialists/` | `episodes/03-coordinator-specialists/handoff-example.md`, `templates/prompts/context-prompt-template.md` |
-| 4 | Git worktree / isolated workspace practice guide | `episodes/04-isolated-workspaces/` | `episodes/04-isolated-workspaces/worktree-practice-guide.md` |
-| 5 | Spec-driven development exercise/spec seed | `episodes/05-spec-driven-development/` | `episodes/05-spec-driven-development/spec-seed.md` |
-| 6 | Context-oriented prompt/context exercise | `episodes/06-context-engine/` | `episodes/06-context-engine/context-exercise.md`, `templates/prompts/context-prompt-template.md` |
-| 7 | Multi-agent orchestration wave example | `episodes/07-multi-agent-orchestration/` | `episodes/07-multi-agent-orchestration/orchestration-wave.md`, `templates/verifier-checklists/review-checklist.md` |
-| 8 | Full spec-to-PR walkthrough | `episodes/08-spec-to-pr/` | `episodes/08-spec-to-pr/walkthrough-outline.md`, `templates/pr-summaries/pr-summary-template.md` |
+| 1 | Repo overview / learning path | episodes/01-welcome/ | episodes/01-welcome/README.md |
+| 2 | Living spec example/template | episodes/02-living-spec/ | episodes/02-living-spec/living-spec-template.md, templates/specs/episode-spec-template.md |
+| 3 | Coordinator/specialist handoff example | episodes/03-coordinator-specialists/ | episodes/03-coordinator-specialists/handoff-example.md, templates/prompts/context-prompt-template.md |
+| 4 | Git worktree / isolated workspace practice guide | episodes/04-isolated-workspaces/ | episodes/04-isolated-workspaces/worktree-practice-guide.md |
+| 5 | Spec-driven development exercise/spec seed | episodes/05-spec-driven-development/ | episodes/05-spec-driven-development/spec-seed.md |
+| 6 | Context-oriented prompt/context exercise | episodes/06-context-engine/ | episodes/06-context-engine/context-exercise.md, templates/prompts/context-prompt-template.md |
+| 7 | Multi-agent orchestration wave example | episodes/07-multi-agent-orchestration/ | episodes/07-multi-agent-orchestration/orchestration-wave.md, templates/verifier-checklists/review-checklist.md |
+| 8 | Full spec-to-PR walkthrough | episodes/08-spec-to-pr/ | episodes/08-spec-to-pr/walkthrough-outline.md, templates/pr-summaries/pr-summary-template.md |
+
+## Wave 2 practice-track map
+
+| Episode | JWT workshop artifact | Delivery dashboard artifact |
+| --- | --- | --- |
+| 2 | `examples/jwt-workshop/specs/living-spec.md` | `examples/delivery-dashboard/specs/living-spec.md` |
+| 3 | `examples/jwt-workshop/prompts/coordinator-handoff.md` | `examples/delivery-dashboard/prompts/coordinator-handoff.md` |
+| 4 | `examples/jwt-workshop/workspaces/isolated-workspace-exercise.md` | `examples/delivery-dashboard/workspaces/isolated-workspace-exercise.md` |
+| 5 | `examples/jwt-workshop/specs/spec-seed.md` | `examples/delivery-dashboard/specs/spec-seed.md` |
+| 6 | `examples/jwt-workshop/context/context-exercise.md` | `examples/delivery-dashboard/context/context-exercise.md` |
+| 7 | `examples/jwt-workshop/waves/wave-plan.md` | `examples/delivery-dashboard/waves/wave-plan.md` |
+| 8 | `examples/jwt-workshop/pr/pr-summary.md` | `examples/delivery-dashboard/pr/pr-summary.md` |
 
 ## Recommended reading and practice order
 
@@ -71,11 +84,14 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 
 ### Second pass: apply the workflow on one track
 
-5. Choose **one** practice track:
-   - `examples/jwt-workshop/` for backend/auth work
-   - `examples/delivery-dashboard/` for feature/dashboard work
-6. Continue through Episodes 5-8 while staying on the same track.
-7. Revisit the second track after finishing the first if you want repetition in a different domain.
+1. Choose **one** practice track:
+
+- `examples/jwt-workshop/` for backend/auth work
+- `examples/delivery-dashboard/` for feature/dashboard work
+
+1. Use the matching Wave 2 track artifact for each episode from the table above.
+2. Continue through Episodes 5-8 while staying on the same track.
+3. Revisit the second track after finishing the first if you want repetition in a different domain.
 
 ## Suggested learner workflow
 
@@ -86,11 +102,11 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 
 ## Current state of the repository
 
-Wave 1 is intentionally documentation-first. The repository now provides:
+The repository is still intentionally documentation-first. It now provides:
 
 - a navigable course structure
 - episode-level placeholder artifacts
 - reusable templates for future waves
-- two example tracks to ground the exercises
+- two example tracks with concrete worked materials for Episodes 2-8
 
 Full runnable JWT and dashboard implementations are intentionally deferred to later waves.
