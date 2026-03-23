@@ -6,7 +6,7 @@ Learning companion repository for the 8-part dev.to series on building with Augm
 
 This repository is the hands-on workspace for the series: [Augmentcode Intent](https://dev.to/wvanheemstra/series/37310)
 
-Wave 1 established the learning foundation. Wave 2 adds mirrored, track-specific worked artifacts so learners can practice the series in either an auth-focused or dashboard-focused scenario. The repository still does **not** include full runnable implementations for the example products.
+Wave 1 established the learning foundation. Wave 2 added mirrored, track-specific worked artifacts. Wave 3 now adds small starter implementations for both tracks so learners can connect the specs to real code without jumping straight to full product builds.
 
 ## How to use this repository with the article series
 
@@ -16,7 +16,7 @@ Wave 1 established the learning foundation. Wave 2 adds mirrored, track-specific
 4. Reuse or adapt a template from `templates/`.
 5. Apply the episode's ideas to one of the practice tracks in `examples/`.
 
-For Episodes 2-8, each practice track now contains a concrete artifact chain you can follow from living spec to PR summary.
+For Episodes 2-8, each practice track now contains a concrete artifact chain you can follow from living spec to PR summary, plus a Wave 3 starter implementation you can inspect and verify.
 
 Treat the repository as a study workbook: the articles explain the concepts, and this repo gives you a place to inspect examples, copy templates, and build your own iterations.
 
@@ -73,6 +73,13 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 | 7 | `examples/jwt-workshop/waves/wave-plan.md` | `examples/delivery-dashboard/waves/wave-plan.md` |
 | 8 | `examples/jwt-workshop/pr/pr-summary.md` | `examples/delivery-dashboard/pr/pr-summary.md` |
 
+## Wave 3 starter implementations
+
+| Track | Stack | Starter location | Verification |
+| --- | --- | --- | --- |
+| JWT workshop | Node.js + TypeScript + Express | `examples/jwt-workshop/starter-api/` | `npm run typecheck` and `npm test` |
+| Delivery dashboard | React + TypeScript + Vite | `examples/delivery-dashboard/starter-app/` | `npm test` and `npm run build` |
+
 ## Recommended reading and practice order
 
 ### First pass: understand the workflow
@@ -91,22 +98,25 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 
 1. Use the matching Wave 2 track artifact for each episode from the table above.
 2. Continue through Episodes 5-8 while staying on the same track.
-3. Revisit the second track after finishing the first if you want repetition in a different domain.
+3. Inspect the matching Wave 3 starter implementation once the planning flow makes sense.
+4. Revisit the second track after finishing the first if you want repetition in a different domain.
 
 ## Suggested learner workflow
 
 - Start in `episodes/` for episode-specific guidance.
 - Copy from `templates/` instead of writing from scratch.
 - Keep your own working notes or specs next to the example track you choose.
-- Expand the placeholders into real specs, prompts, and PR materials as later waves add implementation detail.
+- Use the Wave 3 starter slices to compare the planning artifacts against real code.
+- Expand the starter implementations only after you understand what each wave intentionally defers.
 
 ## Current state of the repository
 
-The repository is still intentionally documentation-first. It now provides:
+The repository is still intentionally learning-first. It now provides:
 
 - a navigable course structure
 - episode-level placeholder artifacts
 - reusable templates for future waves
 - two example tracks with concrete worked materials for Episodes 2-8
+- two small starter implementations that make the track scenarios inspectable and testable
 
-Full runnable JWT and dashboard implementations are intentionally deferred to later waves.
+Full production-style JWT and dashboard implementations are intentionally deferred to later waves.
