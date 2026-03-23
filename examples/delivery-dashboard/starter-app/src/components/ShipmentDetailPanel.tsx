@@ -71,6 +71,10 @@ export function ShipmentDetailPanel({ shipment, isLoading, onClose }: ShipmentDe
           <dt>Delay</dt>
           <dd>{shipment.delayMinutes} minutes</dd>
         </div>
+        <div>
+          <dt>Priority note</dt>
+          <dd>{shipment.priorityNote}</dd>
+        </div>
       </dl>
     </aside>
   )

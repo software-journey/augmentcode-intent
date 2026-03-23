@@ -29,4 +29,4 @@ You are practicing how to turn a product idea into a clear spec before implement
 
 ## Current implementation link
 
-Inspect `../starter-app/README.md` and `../starter-app/src/` to see this spec translated into a minimal React + TypeScript + Vite slice with a Wave 4 detail-panel follow-up.
+Inspect `../starter-app/README.md` and `../starter-app/src/` to see this spec translated into a Wave 5 React + TypeScript + Vite app with routed auth and API-backed shipment data.

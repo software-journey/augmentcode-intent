@@ -29,4 +29,4 @@ You are practicing how to translate an auth idea into a spec before touching imp
 
 ## Current implementation link
 
-Inspect `../starter-api/README.md` and `../starter-api/src/` to see this spec translated into a minimal Express + TypeScript slice with a Wave 4 refresh follow-up.
+Inspect `../starter-api/README.md`, `../starter-api/src/`, and `../starter-api/prisma/` to see this spec translated into a Wave 5 Express + TypeScript implementation with persisted auth and shipment data.

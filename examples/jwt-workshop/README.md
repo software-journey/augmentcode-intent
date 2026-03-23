@@ -1,11 +1,11 @@
 # JWT authentication workshop
 
-Use this track for backend-leaning practice built around a realistic auth slice: planning a JWT login flow, protecting a user profile endpoint, extending the flow with refresh behavior, and turning the work into a reviewable delivery story.
+Use this track for backend-leaning practice built around a realistic auth slice: planning a JWT login flow, protecting a user profile endpoint, extending the flow with refresh behavior, and then maturing it into a production-style local auth + shipment API.
 
 ## Focus areas
 
 - login and token flows
-- lightweight token lifecycle follow-ups
+- production-style token lifecycle follow-ups
 - spec-first planning for auth changes
 - targeted context gathering around handlers, middleware, and tests
 - concise handoffs between planner, implementor, and verifier roles
@@ -16,7 +16,7 @@ Use this track for backend-leaning practice built around a realistic auth slice:
 2. Review `prompts/coordinator-handoff.md` before imagining implementation work.
 3. Use `workspaces/isolated-workspace-exercise.md` to plan isolated execution.
 4. Continue with `context/context-exercise.md`, `waves/wave-plan.md`, and `pr/pr-summary.md`.
-5. Inspect `starter-api/README.md` and `starter-api/src/` to compare the spec with a minimal implementation and the Wave 4 refresh follow-up.
+5. Inspect `starter-api/README.md`, `starter-api/src/`, and `starter-api/prisma/` to compare the spec with the Wave 5 production-foundations implementation.
 6. Revisit `specs/spec-seed.md` when you want a follow-up exercise.
 
 ## Episode-to-artifact map
@@ -34,10 +34,10 @@ Use this track for backend-leaning practice built around a realistic auth slice:
 ## Current implementation path
 
 - Stack: Node.js + TypeScript + Express
-- Starter code: `starter-api/`
+- Current app: `starter-api/`
 - Start with: `starter-api/README.md`
 - Verify with: `npm run typecheck` and `npm test`
-- Wave 4 increment: `POST /refresh` with in-memory refresh-token validation
+- Wave 5 state: SQLite persistence, hashed passwords, refresh-token cookies, protected shipment endpoints
 
 ## Folder guide
 
@@ -49,4 +49,4 @@ Use this track for backend-leaning practice built around a realistic auth slice:
 | `context/` | Questions to ask before editing |
 | `waves/` | Multi-step delivery planning |
 | `pr/` | Review-ready change summaries |
-| `starter-api/` | Minimal runnable auth implementation with login, profile access, and refresh follow-up |
+| `starter-api/` | Runnable auth + shipment API with persistence, validation, and refresh-cookie session flow |

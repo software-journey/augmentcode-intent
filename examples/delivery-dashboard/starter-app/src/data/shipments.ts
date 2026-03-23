@@ -9,6 +9,7 @@ export const shipmentFixtures: Shipment[] = [
     etaWindow: 'Due 10:15',
     status: 'delayed',
     delayMinutes: 42,
+    priorityNote: 'Escalate to operations lead if the route slips another 15 minutes.',
   },
   {
     id: 'ship-2',
@@ -18,6 +19,7 @@ export const shipmentFixtures: Shipment[] = [
     etaWindow: 'Due 11:00',
     status: 'on-time',
     delayMinutes: 0,
+    priorityNote: 'No intervention required.',
   },
   {
     id: 'ship-3',
@@ -27,6 +29,7 @@ export const shipmentFixtures: Shipment[] = [
     etaWindow: 'Due 11:45',
     status: 'delayed',
     delayMinutes: 18,
+    priorityNote: 'Prepare a revised ETA notice for the customer success team.',
   },
   {
     id: 'ship-4',
@@ -36,5 +39,6 @@ export const shipmentFixtures: Shipment[] = [
     etaWindow: 'Due 12:30',
     status: 'at-risk',
     delayMinutes: 7,
+    priorityNote: 'Watch this route for carrier updates before escalating.',
   },
 ]

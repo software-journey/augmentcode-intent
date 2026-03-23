@@ -1,19 +1,26 @@
-# Delivery dashboard starter app
+# Delivery dashboard production-foundations app
 
-This Wave 4 starter turns the delivery dashboard spec into a small React + TypeScript + Vite workflow with a second-step operator detail interaction.
+This Wave 5 app turns the delivery dashboard spec into a routed, authenticated React + TypeScript + Vite workflow backed by the local JWT + shipment API.
 
 ## Implemented
 
-- delayed-delivery summary card
-- delayed-only shipment filter
-- local shipment fixture data
-- explicit loading and empty states
-- shipment detail panel selection and dismissal
-- focused tests for filter behavior, detail interaction, and UI states
+- login route and protected dashboard route
+- session bootstrap via refresh-token cookie
+- React Query shipment loading from the local backend
+- delayed-delivery summary card and delayed-only shipment filter
+- shipment detail panel selection, dismissal, and priority-note review
+- loading, error, and empty states for the authenticated view
+- focused tests for login/session, shipment loading, detail interaction, and recovery states
+
+## Setup
+
+1. Copy `.env.example` to `.env` if you need a custom API base URL.
+2. Start the backend in `../../jwt-workshop/starter-api/`.
+3. Run `npm install`.
+4. Run `npm run dev`.
 
 ## Deferred
 
-- API integration
 - live updates and polling
 - analytics and broader dashboard workflows
 - route-level detail pages or deep-linking
@@ -26,4 +33,4 @@ This Wave 4 starter turns the delivery dashboard spec into a small React + TypeS
 
 ## Connect back to Wave 2
 
-Start with `../specs/living-spec.md`, then inspect `src/` to see how the delayed-deliveries slice is implemented in a minimal UI.
+Start with `../specs/living-spec.md`, then inspect `src/` to see how the delayed-deliveries slice evolved into an authenticated dashboard.

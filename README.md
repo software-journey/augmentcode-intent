@@ -6,7 +6,7 @@ Learning companion repository for the 8-part dev.to series on building with Augm
 
 This repository is the hands-on workspace for the series: [Augmentcode Intent](https://dev.to/wvanheemstra/series/37310)
 
-Wave 1 established the learning foundation. Wave 2 added mirrored, track-specific worked artifacts. Wave 3 added small starter implementations for both tracks. Wave 4 now extends those starters with one realistic second-slice increment per track so learners can see how the workflow evolves beyond the first implementation pass.
+Wave 1 established the learning foundation. Wave 2 added mirrored, track-specific worked artifacts. Wave 3 added small starter implementations for both tracks. Wave 4 extended those starters with a realistic second-slice increment per track, and Wave 5 now turns both tracks into production-style local applications with persistence, authenticated data flow, and stronger verification foundations.
 
 ## How to use this repository with the article series
 
@@ -16,7 +16,7 @@ Wave 1 established the learning foundation. Wave 2 added mirrored, track-specifi
 4. Reuse or adapt a template from `templates/`.
 5. Apply the episode's ideas to one of the practice tracks in `examples/`.
 
-For Episodes 2-8, each practice track now contains a concrete artifact chain you can follow from living spec to PR summary, plus a starter implementation you can inspect, extend, and verify.
+For Episodes 2-8, each practice track now contains a concrete artifact chain you can follow from living spec to PR summary, plus a production-foundations implementation you can inspect, run, and verify.
 
 Treat the repository as a study workbook: the articles explain the concepts, and this repo gives you a place to inspect examples, copy templates, and build your own iterations.
 
@@ -65,25 +65,25 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 
 | Episode | JWT workshop artifact | Delivery dashboard artifact |
 | --- | --- | --- |
-| 2 | `examples/jwt-workshop/specs/living-spec.md` | `examples/delivery-dashboard/specs/living-spec.md` |
-| 3 | `examples/jwt-workshop/prompts/coordinator-handoff.md` | `examples/delivery-dashboard/prompts/coordinator-handoff.md` |
-| 4 | `examples/jwt-workshop/workspaces/isolated-workspace-exercise.md` | `examples/delivery-dashboard/workspaces/isolated-workspace-exercise.md` |
-| 5 | `examples/jwt-workshop/specs/spec-seed.md` | `examples/delivery-dashboard/specs/spec-seed.md` |
-| 6 | `examples/jwt-workshop/context/context-exercise.md` | `examples/delivery-dashboard/context/context-exercise.md` |
-| 7 | `examples/jwt-workshop/waves/wave-plan.md` | `examples/delivery-dashboard/waves/wave-plan.md` |
-| 8 | `examples/jwt-workshop/pr/pr-summary.md` | `examples/delivery-dashboard/pr/pr-summary.md` |
+| 2 | examples/jwt-workshop/specs/living-spec.md | examples/delivery-dashboard/specs/living-spec.md |
+| 3 | examples/jwt-workshop/prompts/coordinator-handoff.md | examples/delivery-dashboard/prompts/coordinator-handoff.md |
+| 4 | examples/jwt-workshop/workspaces/isolated-workspace-exercise.md | examples/delivery-dashboard/workspaces/isolated-workspace-exercise.md |
+| 5 | examples/jwt-workshop/specs/spec-seed.md | examples/delivery-dashboard/specs/spec-seed.md |
+| 6 | examples/jwt-workshop/context/context-exercise.md | examples/delivery-dashboard/context/context-exercise.md |
+| 7 | examples/jwt-workshop/waves/wave-plan.md | examples/delivery-dashboard/waves/wave-plan.md |
+| 8 | examples/jwt-workshop/pr/pr-summary.md | examples/delivery-dashboard/pr/pr-summary.md |
 
-## Current starter implementations
+## Current implementation tracks
 
-| Track | Stack | Starter location | Verification |
+| Track | Stack | Current app location | Verification |
 | --- | --- | --- | --- |
-| JWT workshop | Node.js + TypeScript + Express | `examples/jwt-workshop/starter-api/` | `npm run typecheck` and `npm test` |
-| Delivery dashboard | React + TypeScript + Vite | `examples/delivery-dashboard/starter-app/` | `npm test` and `npm run build` |
+| JWT workshop | Node.js + TypeScript + Express | examples/jwt-workshop/starter-api/ | npm run typecheck and npm test |
+| Delivery dashboard | React + TypeScript + Vite | examples/delivery-dashboard/starter-app/ | npm test and npm run build |
 
-### Wave 4 second-slice increments
+### Wave 5 production-foundations state
 
-- JWT workshop: `POST /refresh` with in-memory refresh-token validation
-- Delivery dashboard: shipment detail panel opened from the shipment list
+- JWT workshop: SQLite + Prisma persistence, hashed passwords, refresh-cookie auth flow, protected shipment endpoints
+- Delivery dashboard: routed login flow, protected app shell, React Query data loading, authenticated shipment dashboard
 
 ## Recommended reading and practice order
 
@@ -104,7 +104,7 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 1. Use the matching Wave 2 track artifact for each episode from the table above.
 2. Continue through Episodes 5-8 while staying on the same track.
 3. Inspect the matching starter implementation once the planning flow makes sense.
-4. Compare the Wave 4 second-slice increment against the original Wave 2 spec and PR summary.
+4. Compare the Wave 5 implementation against the original Wave 2 spec and PR summary to see how a learning slice matures.
 5. Revisit the second track after finishing the first if you want repetition in a different domain.
 
 ## Suggested learner workflow
@@ -112,8 +112,8 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 - Start in `episodes/` for episode-specific guidance.
 - Copy from `templates/` instead of writing from scratch.
 - Keep your own working notes or specs next to the example track you choose.
-- Use the starter slices and Wave 4 follow-ups to compare the planning artifacts against real code.
-- Expand the starter implementations only after you understand what each wave intentionally defers.
+- Use the starter-to-production progression to compare the planning artifacts against real code.
+- Expand the apps only after you understand what each wave intentionally defers.
 
 ## Current state of the repository
 
@@ -123,7 +123,7 @@ The repository is still intentionally learning-first. It now provides:
 - episode-level placeholder artifacts
 - reusable templates for future waves
 - two example tracks with concrete worked materials for Episodes 2-8
-- two small starter implementations that make the track scenarios inspectable and testable
-- two second-slice follow-ups that show how each starter evolves in a controlled way
+- two production-foundations implementations that make the track scenarios runnable and verifiable
+- a concrete Wave 5 full-stack connection between the auth and dashboard tracks
 
-Full production-style JWT and dashboard implementations are intentionally deferred to later waves.
+Broader deployment, observability, and enterprise-hardening concerns are still intentionally deferred to later waves.
