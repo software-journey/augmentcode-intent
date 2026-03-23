@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
 import { DelayedSummaryCard } from './components/DelayedSummaryCard'
+import { ShipmentDetailPanel } from './components/ShipmentDetailPanel'
 import { ShipmentList } from './components/ShipmentList'
 import { StatusFilter } from './components/StatusFilter'
 import { shipmentFixtures } from './data/shipments'
@@ -20,6 +21,7 @@ function App({
 }: AppProps) {
   const [filter, setFilter] = useState<ShipmentFilter>('all')
   const [isLoading, setIsLoading] = useState(initialLoading)
+  const [selectedShipmentId, setSelectedShipmentId] = useState<string | null>(null)
 
   useEffect(() => {
     if (!initialLoading) {
@@ -45,14 +47,26 @@ function App({
     [initialShipments, filter],
   )
 
+  const selectedShipment = useMemo(
+    () => visibleShipments.find((shipment) => shipment.id === selectedShipmentId) ?? null,
+    [selectedShipmentId, visibleShipments],
+  )
+
+  useEffect(() => {
+    if (selectedShipmentId && !selectedShipment) {
+      setSelectedShipmentId(null)
+    }
+  }, [selectedShipment, selectedShipmentId])
+
   return (
     <main className="dashboard-shell">
       <header className="hero-panel">
-        <p className="eyebrow">Wave 3 starter app</p>
+        <p className="eyebrow">Wave 4 starter app</p>
         <h1>Delayed deliveries dashboard</h1>
         <p className="hero-copy">
           This small React slice turns the delivery-dashboard spec into a concrete
-          learner-friendly example with fixture data, filtering, and explicit UI states.
+          learner-friendly example with fixture data, filtering, explicit UI states,
+          and a focused shipment-detail follow-up.
         </p>
       </header>
 
@@ -77,7 +91,19 @@ function App({
         <StatusFilter value={filter} onChange={setFilter} />
       </section>
 
-      <ShipmentList shipments={visibleShipments} isLoading={isLoading} />
+      <section className="content-grid">
+        <ShipmentList
+          shipments={visibleShipments}
+          isLoading={isLoading}
+          selectedShipmentId={selectedShipmentId}
+          onSelect={setSelectedShipmentId}
+        />
+        <ShipmentDetailPanel
+          shipment={selectedShipment}
+          isLoading={isLoading}
+          onClose={() => setSelectedShipmentId(null)}
+        />
+      </section>
     </main>
   )
 }
