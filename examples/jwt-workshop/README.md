@@ -16,7 +16,7 @@ Use this track for backend-leaning practice built around a realistic auth slice:
 2. Review `prompts/coordinator-handoff.md` before imagining implementation work.
 3. Use `workspaces/isolated-workspace-exercise.md` to plan isolated execution.
 4. Continue with `context/context-exercise.md`, `waves/wave-plan.md`, and `pr/pr-summary.md`.
-5. Inspect `starter-api/README.md`, `starter-api/src/`, and `starter-api/prisma/` to compare the spec with the Wave 5 production-foundations implementation.
+5. Inspect `starter-api/README.md`, `starter-api/src/`, and `starter-api/prisma/` to compare the spec with the Wave 6/7 routed-session implementation.
 6. Revisit `specs/spec-seed.md` when you want a follow-up exercise.
 
 ## Episode-to-artifact map
@@ -37,7 +37,7 @@ Use this track for backend-leaning practice built around a realistic auth slice:
 - Current app: `starter-api/`
 - Start with: `starter-api/README.md`
 - Verify with: `npm run typecheck` and `npm test`
-- Wave 5 state: SQLite persistence, hashed passwords, refresh-token cookies, protected shipment endpoints
+- Wave 6/7 state: session inspection/revocation, server-side shipment filtering, shipment detail routes, and CI-ready verification
 
 ## Folder guide
 

@@ -12,6 +12,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<DashboardPage />} />
+        <Route path="/shipments/:shipmentId" element={<DashboardPage />} />
       </Route>
     </Routes>
   )

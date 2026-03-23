@@ -59,6 +59,15 @@
   color: #b91c1c;
 }
 
+.session-notice {
+  margin-top: 18px;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  background: rgba(217, 119, 6, 0.08);
+  color: #9a6700;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
 .primary-button,
 .secondary-button {
   border-radius: 999px;
