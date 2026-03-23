@@ -1,9 +1,11 @@
-.dashboard-shell {
+.dashboard-shell,
+.app-shell {
   display: grid;
   gap: 24px;
 }
 
 .hero-panel,
+.app-shell__header,
 .summary-card,
 .controls-panel,
 .panel {
@@ -13,8 +15,68 @@
   box-shadow: var(--shadow);
 }
 
-.hero-panel {
+.hero-panel,
+.app-shell__header,
+.login-card {
   padding: 32px;
+}
+
+.centered-panel {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.login-card {
+  width: min(480px, 100%);
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.login-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.login-form input {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+}
+
+.form-error {
+  color: #b91c1c;
+}
+
+.primary-button,
+.secondary-button {
+  border-radius: 999px;
+  padding: 12px 18px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.primary-button {
+  border: 0;
+  background: var(--accent);
+  color: white;
+}
+
+.secondary-button {
+  border: 1px solid var(--accent-border);
+  background: transparent;
+  color: var(--text-h);
 }
 
 .hero-copy {
@@ -212,12 +274,14 @@
   }
 
   .hero-panel,
+  .app-shell__header,
   .summary-card,
   .controls-panel,
   .panel-message,
   .empty-state,
   .shipment-select,
-  .detail-panel {
+  .detail-panel,
+  .login-card {
     padding: 20px;
   }
 

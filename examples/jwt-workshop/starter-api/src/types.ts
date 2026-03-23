@@ -1,11 +1,9 @@
+import type { Request } from 'express'
+
 export type PublicUser = {
   id: string
   email: string
   name: string
-}
-
-export type StoredUser = PublicUser & {
-  password: string
 }
 
 export type LoginRequest = {
@@ -13,8 +11,21 @@ export type LoginRequest = {
   password: string
 }
 
-export type RefreshRequest = {
-  refreshToken: string
+export type AccessTokenPayload = PublicUser
+
+export type ShipmentStatus = 'delayed' | 'on-time' | 'at-risk'
+
+export type ShipmentRecord = {
+  id: string
+  route: string
+  destination: string
+  courier: string
+  etaWindow: string
+  status: ShipmentStatus
+  delayMinutes: number
+  priorityNote: string
 }
 
-export type AccessTokenPayload = PublicUser
+export type AuthenticatedRequest = Request & {
+  currentUser: PublicUser
+}
