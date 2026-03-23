@@ -52,7 +52,11 @@ function jsonResponse(body: unknown, status = 200) {
   })
 }
 
-describe('Wave 5 app shell', () => {
+function mockApi(handler: (url: string) => Response) {
+  vi.mocked(globalThis.fetch).mockImplementation(async (input) => handler(String(input)))
+}
+
+describe('Wave 6 dashboard routing', () => {
   beforeEach(() => {
     vi.spyOn(globalThis, 'fetch')
   })
@@ -62,25 +66,48 @@ describe('Wave 5 app shell', () => {
   })
 
   it('redirects unauthenticated users to the login page', async () => {
-    vi.mocked(globalThis.fetch).mockResolvedValueOnce(jsonResponse({ error: 'Refresh token is missing.' }, 401))
+    mockApi((url) => {
+      if (url.endsWith('/auth/refresh')) {
+        return jsonResponse({ error: 'Refresh token is missing.' }, 401)
+      }
+
+      return jsonResponse({ error: 'Unhandled request.' }, 500)
+    })
 
     renderApp(['/'])
 
     expect(await screen.findByRole('heading', { name: /sign in to the dashboard/i })).toBeInTheDocument()
   })
 
-  it('logs in, renders shipments, filters delayed rows, and shows shipment details', async () => {
-    vi.mocked(globalThis.fetch)
-      .mockResolvedValueOnce(jsonResponse({ error: 'Refresh token is missing.' }, 401))
-      .mockResolvedValueOnce(
-        jsonResponse({
-          accessToken: 'wave-5-token',
+  it('logs in, filters with URL-driven state, and loads detail on a routed shipment view', async () => {
+    mockApi((url) => {
+      if (url.endsWith('/auth/refresh')) {
+        return jsonResponse({ error: 'Refresh token is missing.' }, 401)
+      }
+
+      if (url.endsWith('/auth/login')) {
+        return jsonResponse({
+          accessToken: 'wave-6-token',
           tokenType: 'Bearer',
           expiresIn: '15m',
           user: { id: 'user-1', email: 'ada@example.com', name: 'Ada Lovelace' },
-        }),
-      )
-      .mockResolvedValueOnce(jsonResponse({ shipments }))
+        })
+      }
+
+      if (url.includes('/shipments?status=delayed')) {
+        return jsonResponse({ shipments: shipments.filter((shipment) => shipment.status === 'delayed') })
+      }
+
+      if (url.endsWith('/shipments/ship-1')) {
+        return jsonResponse({ shipment: shipments[0] })
+      }
+
+      if (url.endsWith('/shipments')) {
+        return jsonResponse({ shipments })
+      }
+
+      return jsonResponse({ error: 'Unhandled request.' }, 500)
+    })
 
     renderApp(['/login'])
 
@@ -90,54 +117,104 @@ describe('Wave 5 app shell', () => {
     expect(await screen.findByText(/1 delayed delivery needs immediate attention/i)).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: /delayed only/i }))
+    expect(await screen.findByText(/Only delayed shipments returned by the server-side filter/i)).toBeInTheDocument()
     expect(screen.queryByText('SEA → DEN')).not.toBeInTheDocument()
+    expect(await screen.findByRole('button', { name: /view details/i })).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: /view details/i }))
 
-    const panel = screen.getByLabelText('Shipment detail panel')
+    const panel = await screen.findByLabelText('Shipment detail panel')
     expect(within(panel).getByText('ATL → NYC')).toBeInTheDocument()
     expect(within(panel).getByText(/Escalate to operations lead/i)).toBeInTheDocument()
   })
 
-  it('restores a session from refresh and loads shipments on the protected route', async () => {
-    vi.mocked(globalThis.fetch)
-      .mockResolvedValueOnce(
-        jsonResponse({
-          accessToken: 'wave-5-token',
+  it('supports opening a shipment detail route directly after session restore', async () => {
+    mockApi((url) => {
+      if (url.endsWith('/auth/refresh')) {
+        return jsonResponse({
+          accessToken: 'wave-6-token',
           tokenType: 'Bearer',
           expiresIn: '15m',
           user: { id: 'user-2', email: 'grace@example.com', name: 'Grace Hopper' },
-        }),
-      )
-      .mockResolvedValueOnce(jsonResponse({ shipments }))
+        })
+      }
 
-    renderApp(['/'])
+      if (url.includes('/shipments?status=delayed')) {
+        return jsonResponse({ shipments: [shipments[0]] })
+      }
+
+      if (url.endsWith('/shipments/ship-1')) {
+        return jsonResponse({ shipment: shipments[0] })
+      }
+
+      return jsonResponse({ error: 'Unhandled request.' }, 500)
+    })
+
+    renderApp(['/shipments/ship-1?filter=delayed'])
 
     expect(await screen.findByText(/Logged in as Grace Hopper/i)).toBeInTheDocument()
-    expect(await screen.findAllByRole('listitem')).toHaveLength(2)
+    expect(await screen.findByText(/1 delayed delivery needs immediate attention/i)).toBeInTheDocument()
+
+    const panel = await screen.findByLabelText('Shipment detail panel')
+    expect(within(panel).getByText('ATL → NYC')).toBeInTheDocument()
   })
 
-  it('shows an error state when the shipment request fails', async () => {
-    vi.mocked(globalThis.fetch)
-      .mockResolvedValueOnce(
-        jsonResponse({
-          accessToken: 'wave-5-token',
+  it('returns the user to login with a session-expired notice when the shipment request gets a 401', async () => {
+    mockApi((url) => {
+      if (url.endsWith('/auth/refresh')) {
+        return jsonResponse({
+          accessToken: 'wave-6-token',
           tokenType: 'Bearer',
           expiresIn: '15m',
           user: { id: 'user-1', email: 'ada@example.com', name: 'Ada Lovelace' },
-        }),
-      )
-      .mockResolvedValueOnce(jsonResponse({ error: 'Database unavailable.' }, 500))
-      .mockResolvedValueOnce(jsonResponse({ shipments }))
+        })
+      }
+
+      if (url.endsWith('/shipments')) {
+        return jsonResponse({ error: 'Invalid refresh token.' }, 401)
+      }
+
+      return jsonResponse({ error: 'Unhandled request.' }, 500)
+    })
 
     renderApp(['/'])
 
-    expect(await screen.findByText(/Shipment data is unavailable/i)).toBeInTheDocument()
+    expect(
+      await screen.findByText(/Your session expired. Sign in again to continue reviewing shipments/i),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /sign in to the dashboard/i })).toBeInTheDocument()
+  })
 
-    fireEvent.click(screen.getByRole('button', { name: /retry/i }))
+  it('shows a not-found detail state for an unknown routed shipment', async () => {
+    mockApi((url) => {
+      if (url.endsWith('/auth/refresh')) {
+        return jsonResponse({
+          accessToken: 'wave-6-token',
+          tokenType: 'Bearer',
+          expiresIn: '15m',
+          user: { id: 'user-1', email: 'ada@example.com', name: 'Ada Lovelace' },
+        })
+      }
+
+      if (url.endsWith('/shipments')) {
+        return jsonResponse({ shipments })
+      }
+
+      if (url.endsWith('/shipments/missing')) {
+        return jsonResponse({ error: 'Shipment not found.' }, 404)
+      }
+
+      return jsonResponse({ error: 'Unhandled request.' }, 500)
+    })
+
+    renderApp(['/shipments/missing'])
+
+    expect(await screen.findByText(/Shipment not found/i)).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: /return to list/i }))
 
     await waitFor(() => {
-      expect(screen.getByText(/1 delayed delivery needs immediate attention/i)).toBeInTheDocument()
+      expect(screen.getByText(/Select a shipment/i)).toBeInTheDocument()
     })
   })
 })

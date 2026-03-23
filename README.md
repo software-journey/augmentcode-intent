@@ -6,7 +6,7 @@ Learning companion repository for the 8-part dev.to series on building with Augm
 
 This repository is the hands-on workspace for the series: [Augmentcode Intent](https://dev.to/wvanheemstra/series/37310)
 
-Wave 1 established the learning foundation. Wave 2 added mirrored, track-specific worked artifacts. Wave 3 added small starter implementations for both tracks. Wave 4 extended those starters with a realistic second-slice increment per track, and Wave 5 now turns both tracks into production-style local applications with persistence, authenticated data flow, and stronger verification foundations.
+Wave 1 established the learning foundation. Wave 2 added mirrored, track-specific worked artifacts. Wave 3 added small starter implementations for both tracks. Wave 4 extended those starters with a realistic second-slice increment per track. Wave 5 turned both tracks into production-style local applications, Wave 6 added routed operator workflows and stronger session behavior, and Wave 7 adds delivery-readiness polish through repo automation and clearer run/verification guidance.
 
 ## How to use this repository with the article series
 
@@ -80,10 +80,11 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 | JWT workshop | Node.js + TypeScript + Express | examples/jwt-workshop/starter-api/ | npm run typecheck and npm test |
 | Delivery dashboard | React + TypeScript + Vite | examples/delivery-dashboard/starter-app/ | npm test and npm run build |
 
-### Wave 5 production-foundations state
+### Wave 6 / Wave 7 current state
 
-- JWT workshop: SQLite + Prisma persistence, hashed passwords, refresh-cookie auth flow, protected shipment endpoints
-- Delivery dashboard: routed login flow, protected app shell, React Query data loading, authenticated shipment dashboard
+- JWT workshop: SQLite + Prisma persistence, hashed passwords, refresh-cookie auth flow, session inspection/revocation, filtered shipment APIs, and shipment detail routes
+- Delivery dashboard: routed login flow, protected app shell, React Query data loading, route-based shipment detail views, and expired-session recovery UI
+- Repo automation: GitHub Actions CI for backend/frontend verification
 
 ## Recommended reading and practice order
 
@@ -104,7 +105,7 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 1. Use the matching Wave 2 track artifact for each episode from the table above.
 2. Continue through Episodes 5-8 while staying on the same track.
 3. Inspect the matching starter implementation once the planning flow makes sense.
-4. Compare the Wave 5 implementation against the original Wave 2 spec and PR summary to see how a learning slice matures.
+4. Compare the Wave 6/7 implementation against the original Wave 2 spec and PR summary to see how a learning slice matures.
 5. Revisit the second track after finishing the first if you want repetition in a different domain.
 
 ## Suggested learner workflow
@@ -125,5 +126,7 @@ The repository is still intentionally learning-first. It now provides:
 - two example tracks with concrete worked materials for Episodes 2-8
 - two production-foundations implementations that make the track scenarios runnable and verifiable
 - a concrete Wave 5 full-stack connection between the auth and dashboard tracks
+- route-driven and session-aware Wave 6 workflows across both tracks
+- a Wave 7 CI baseline that replays the main backend/frontend verification commands automatically
 
 Broader deployment, observability, and enterprise-hardening concerns are still intentionally deferred to later waves.

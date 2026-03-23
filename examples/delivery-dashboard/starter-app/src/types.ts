@@ -24,6 +24,11 @@ export type AuthResponse = {
   user: SessionUser
 }
 
+export type AuthNotice = {
+  level: 'info' | 'warning'
+  message: string
+}
+
 export type LoginCredentials = {
   email: string
   password: string

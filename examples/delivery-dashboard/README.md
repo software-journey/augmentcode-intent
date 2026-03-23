@@ -16,7 +16,7 @@ Use this track for product and dashboard-oriented practice built around a realis
 2. Review `prompts/coordinator-handoff.md` to see how a planner would package the change.
 3. Use `workspaces/isolated-workspace-exercise.md` before imagining concurrent work.
 4. Continue with `context/context-exercise.md`, `waves/wave-plan.md`, and `pr/pr-summary.md`.
-5. Inspect `starter-app/README.md` and `starter-app/src/` to compare the spec with the Wave 5 routed, authenticated implementation.
+5. Inspect `starter-app/README.md` and `starter-app/src/` to compare the spec with the Wave 6/7 routed, session-aware implementation.
 6. Use `specs/spec-seed.md` as the next dashboard slice once the first walkthrough feels clear.
 
 ## Episode-to-artifact map
@@ -37,7 +37,7 @@ Use this track for product and dashboard-oriented practice built around a realis
 - Current app: `starter-app/`
 - Start with: `starter-app/README.md`
 - Verify with: `npm test` and `npm run build`
-- Wave 5 state: login route, protected dashboard shell, React Query shipment loading, API-backed detail workflow
+- Wave 6/7 state: URL-driven shipment detail routes, server-side delayed filtering, expired-session recovery, and CI-backed verification
 
 ## Folder guide
 

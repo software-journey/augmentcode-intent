@@ -4,6 +4,7 @@ import express from 'express'
 
 import { env } from './config/env'
 import { errorHandler } from './middleware/error-handler'
+import { requestLogger } from './middleware/request-logger'
 import authRouter from './routes/auth'
 import shipmentsRouter from './routes/shipments'
 
@@ -17,6 +18,7 @@ app.use(
 )
 app.use(cookieParser())
 app.use(express.json())
+app.use(requestLogger)
 
 app.get('/health', (_req, res) => {
   res.status(200).json({ status: 'ok' })

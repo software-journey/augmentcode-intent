@@ -9,17 +9,19 @@ import {
 } from 'react'
 
 import { login as loginRequest, logout as logoutRequest, refreshSession } from '../api/auth'
-import type { AuthResponse, LoginCredentials, SessionUser } from '../types'
+import type { AuthNotice, AuthResponse, LoginCredentials, SessionUser } from '../types'
 
 type AuthState = {
   status: 'loading' | 'authenticated' | 'unauthenticated'
   accessToken: string | null
   user: SessionUser | null
+  notice: AuthNotice | null
 }
 
 type AuthContextValue = AuthState & {
   login: (credentials: LoginCredentials) => Promise<void>
   logout: () => Promise<void>
+  expire: (message: string) => void
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -29,6 +31,7 @@ function toAuthenticatedState(response: AuthResponse): AuthState {
     status: 'authenticated',
     accessToken: response.accessToken,
     user: response.user,
+    notice: null,
   }
 }
 
@@ -37,6 +40,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
     status: 'loading',
     accessToken: null,
     user: null,
+    notice: null,
   })
 
   useEffect(() => {
@@ -57,7 +61,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
           setState((currentState) =>
             currentState.status === 'authenticated'
               ? currentState
-              : { status: 'unauthenticated', accessToken: null, user: null },
+              : { status: 'unauthenticated', accessToken: null, user: null, notice: null },
           )
         }
       })
@@ -74,7 +78,16 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   const logout = useCallback(async () => {
     await logoutRequest()
-    setState({ status: 'unauthenticated', accessToken: null, user: null })
+    setState({ status: 'unauthenticated', accessToken: null, user: null, notice: null })
+  }, [])
+
+  const expire = useCallback((message: string) => {
+    setState({
+      status: 'unauthenticated',
+      accessToken: null,
+      user: null,
+      notice: { level: 'warning', message },
+    })
   }, [])
 
   const value = useMemo(
@@ -82,8 +95,9 @@ export function AuthProvider({ children }: PropsWithChildren) {
       ...state,
       login,
       logout,
+      expire,
     }),
-    [login, logout, state],
+    [expire, login, logout, state],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

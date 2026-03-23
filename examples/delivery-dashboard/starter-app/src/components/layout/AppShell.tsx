@@ -12,7 +12,7 @@ export function AppShell({ children, user, onLogout }: AppShellProps) {
     <div className="app-shell">
       <header className="app-shell__header">
         <div>
-          <p className="eyebrow">Wave 5 production foundations</p>
+          <p className="eyebrow">Wave 6 routed workflow · Wave 7 CI-ready</p>
           <h1>Delivery operations dashboard</h1>
           <p className="hero-copy">
             Logged in as {user.name}. The dashboard is now backed by authenticated API data.

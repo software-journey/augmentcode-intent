@@ -37,9 +37,11 @@ export function LoginPage() {
   return (
     <main className="centered-panel">
       <section className="login-card">
-        <p className="eyebrow">Wave 5 production foundations</p>
+        <p className="eyebrow">Wave 6 routed workflow · Wave 7 CI-ready</p>
         <h1>Sign in to the dashboard</h1>
         <p>Use the seeded workshop credentials to load the authenticated operator view.</p>
+
+        {session.notice ? <p className="session-notice">{session.notice.message}</p> : null}
 
         <form className="login-form" onSubmit={handleSubmit}>
           <label>
