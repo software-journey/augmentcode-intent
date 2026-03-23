@@ -6,7 +6,7 @@ Learning companion repository for the 8-part dev.to series on building with Augm
 
 This repository is the hands-on workspace for the series: [Augmentcode Intent](https://dev.to/wvanheemstra/series/37310)
 
-Wave 1 established the learning foundation. Wave 2 added mirrored, track-specific worked artifacts. Wave 3 now adds small starter implementations for both tracks so learners can connect the specs to real code without jumping straight to full product builds.
+Wave 1 established the learning foundation. Wave 2 added mirrored, track-specific worked artifacts. Wave 3 added small starter implementations for both tracks. Wave 4 now extends those starters with one realistic second-slice increment per track so learners can see how the workflow evolves beyond the first implementation pass.
 
 ## How to use this repository with the article series
 
@@ -16,7 +16,7 @@ Wave 1 established the learning foundation. Wave 2 added mirrored, track-specifi
 4. Reuse or adapt a template from `templates/`.
 5. Apply the episode's ideas to one of the practice tracks in `examples/`.
 
-For Episodes 2-8, each practice track now contains a concrete artifact chain you can follow from living spec to PR summary, plus a Wave 3 starter implementation you can inspect and verify.
+For Episodes 2-8, each practice track now contains a concrete artifact chain you can follow from living spec to PR summary, plus a starter implementation you can inspect, extend, and verify.
 
 Treat the repository as a study workbook: the articles explain the concepts, and this repo gives you a place to inspect examples, copy templates, and build your own iterations.
 
@@ -73,12 +73,17 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 | 7 | `examples/jwt-workshop/waves/wave-plan.md` | `examples/delivery-dashboard/waves/wave-plan.md` |
 | 8 | `examples/jwt-workshop/pr/pr-summary.md` | `examples/delivery-dashboard/pr/pr-summary.md` |
 
-## Wave 3 starter implementations
+## Current starter implementations
 
 | Track | Stack | Starter location | Verification |
 | --- | --- | --- | --- |
 | JWT workshop | Node.js + TypeScript + Express | `examples/jwt-workshop/starter-api/` | `npm run typecheck` and `npm test` |
 | Delivery dashboard | React + TypeScript + Vite | `examples/delivery-dashboard/starter-app/` | `npm test` and `npm run build` |
+
+### Wave 4 second-slice increments
+
+- JWT workshop: `POST /refresh` with in-memory refresh-token validation
+- Delivery dashboard: shipment detail panel opened from the shipment list
 
 ## Recommended reading and practice order
 
@@ -98,15 +103,16 @@ Use `examples/delivery-dashboard/` if you want a product/UI-oriented track focus
 
 1. Use the matching Wave 2 track artifact for each episode from the table above.
 2. Continue through Episodes 5-8 while staying on the same track.
-3. Inspect the matching Wave 3 starter implementation once the planning flow makes sense.
-4. Revisit the second track after finishing the first if you want repetition in a different domain.
+3. Inspect the matching starter implementation once the planning flow makes sense.
+4. Compare the Wave 4 second-slice increment against the original Wave 2 spec and PR summary.
+5. Revisit the second track after finishing the first if you want repetition in a different domain.
 
 ## Suggested learner workflow
 
 - Start in `episodes/` for episode-specific guidance.
 - Copy from `templates/` instead of writing from scratch.
 - Keep your own working notes or specs next to the example track you choose.
-- Use the Wave 3 starter slices to compare the planning artifacts against real code.
+- Use the starter slices and Wave 4 follow-ups to compare the planning artifacts against real code.
 - Expand the starter implementations only after you understand what each wave intentionally defers.
 
 ## Current state of the repository
@@ -118,5 +124,6 @@ The repository is still intentionally learning-first. It now provides:
 - reusable templates for future waves
 - two example tracks with concrete worked materials for Episodes 2-8
 - two small starter implementations that make the track scenarios inspectable and testable
+- two second-slice follow-ups that show how each starter evolves in a controlled way
 
 Full production-style JWT and dashboard implementations are intentionally deferred to later waves.
