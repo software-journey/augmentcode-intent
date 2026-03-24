@@ -76,15 +76,13 @@ Keep the work scoped to examples/jwt-workshop/starter-api.
 Create a spec-first plan before implementation.
 ```
 
-1. Click **Create space**.
-2. In the Space form, use settings like these:
-
-- **Name:** `JWT workshop`
-- **Location:** choose a local parent folder where you keep Intent spaces
-- **Git repository:** select this cloned repository
-- **Description:** `JWT auth workshop backend practice`
-
-1. Confirm creation.
+3. Click **Create space**.
+4. In the Space form, use settings like these:
+   - **Name:** `JWT workshop`
+   - **Location:** choose a local parent folder where you keep Intent spaces
+   - **Git repository:** select this cloned repository
+   - **Description:** `JWT auth workshop backend practice`
+5. Confirm creation.
 
 ### What you should see after the Space opens
 
@@ -96,38 +94,73 @@ According to the official Intent quickstart, your first session should open with
 
 Intent also creates an isolated git branch/worktree for the Space so you can work without touching your main branch directly.
 
+### What to do with the right-hand Spec panel
+
+If you have never used Intent before, think of the right-hand **Spec** panel as the written plan for the work. In this repository, that plan starts from the workshop spec file that already exists in the repo.
+
+Do this immediately after the Space opens:
+
+1. In the Explorer, open `examples/jwt-workshop/specs/living-spec.md`.
+2. Read it once from top to bottom so you understand the goal of the workshop.
+3. Copy the content of that file.
+4. Look at the right-hand panel:
+   - if it already contains a draft Spec created by Intent, compare it with `living-spec.md`
+   - if it is empty, incomplete, or too generic, paste the workshop spec content into the right-hand **Spec/Content** area
+5. Keep that Spec visible while you work.
+
+Your goal at this point is simple: make sure the right-hand Spec panel clearly describes the JWT workshop work before asking Intent to plan or change code.
+
 ## Step 5: Understand what is expected from the developer in Intent
 
-For this repository, the expected workflow is:
+If you are new to Intent, the key idea is this:
 
-1. **Start with the spec, not the code**
+- a **spec** is the written plan for what should be built
+- **spec-driven development** means you agree on that plan first, then let Intent help plan and implement against it
 
-- open `examples/jwt-workshop/specs/living-spec.md`
-- make sure the Coordinator's plan matches the track goal
+For this repository, here is exactly what you should do:
 
-1. **Keep scope inside the JWT workshop folder**
+1. **Start with the written plan**
+   - open `examples/jwt-workshop/specs/living-spec.md`
+   - make sure the right-hand Spec panel contains that workshop goal in clear form
+   - do not start by opening random source files
 
-- use `examples/jwt-workshop/`
-- focus implementation work in `examples/jwt-workshop/starter-api/`
+2. **Ask the Coordinator to explain the spec back to you**
+   - in the center Coordinator panel, ask for a short summary of the current Spec
+   - confirm the summary is about the JWT backend workshop, not the delivery dashboard track
+   - if the summary is wrong, fix the Spec before continuing
 
-1. **Use Intent to plan before changing code**
+3. **Ask for a plan before asking for code changes**
+   - tell the Coordinator to create a plan limited to `examples/jwt-workshop/starter-api`
+   - make sure the plan stays inside `examples/jwt-workshop/`
+   - do not approve implementation until the plan matches the workshop spec
 
-- let the Coordinator draft or refine the spec
-- only then move into implementation
+4. **Use the repo artifacts as supporting context**
+   - `specs/living-spec.md` = the main source of truth
+   - `prompts/coordinator-handoff.md` = an example of how to frame the work
+   - `workspaces/isolated-workspace-exercise.md` = how to think about isolated work
+   - `context/context-exercise.md` = questions to ask before editing
+   - `waves/wave-plan.md` = how work can be delivered in increments
+   - `pr/pr-summary.md` = what a review-ready summary looks like
 
-1. **Use the repo artifacts as context**
+5. **Only then move into implementation**
+   - once the Spec and plan are correct, let Intent help with implementation
+   - keep checking that changes stay inside the JWT backend scope
+   - if Intent starts drifting into unrelated files or frontend work, stop and narrow the scope again
 
-- spec
-- handoff prompt
-- isolated-workspace exercise
-- context exercise
-- wave plan
-- PR summary
+6. **Review before staging or merging**
+   - open Intent's **Changes** view
+   - inspect the diffs file by file
+   - stage only the changes that belong to the JWT workshop task
 
-1. **Review generated diffs before staging or merging**
+### A good first Coordinator prompt after the Space opens
 
-- inspect changes in Intent's Changes view
-- stage only what belongs to the workshop task
+Paste this into the center Coordinator panel after you have reviewed or pasted the Spec on the right:
+
+```text
+Read the Spec on the right and summarize it in plain English.
+Then create a backend-only plan limited to examples/jwt-workshop/starter-api.
+Do not implement anything yet.
+```
 
 ## Step 6: Follow the JWT workshop path in this repo
 
