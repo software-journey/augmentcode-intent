@@ -76,13 +76,15 @@ Keep the work scoped to examples/jwt-workshop/starter-api.
 Create a spec-first plan before implementation.
 ```
 
-3. Click **Create space**.
-4. In the Space form, use settings like these:
-   - **Name:** `JWT workshop`
-   - **Location:** choose a local parent folder where you keep Intent spaces
-   - **Git repository:** select this cloned repository
-   - **Description:** `JWT auth workshop backend practice`
-5. Confirm creation.
+1. Click **Create space**.
+2. In the Space form, use settings like these:
+
+- **Name:** `JWT workshop`
+- **Location:** choose a local parent folder where you keep Intent spaces
+- **Git repository:** select this cloned repository
+- **Description:** `JWT auth workshop backend practice`
+
+1. Confirm creation.
 
 ### What you should see after the Space opens
 
@@ -99,24 +101,33 @@ Intent also creates an isolated git branch/worktree for the Space so you can wor
 For this repository, the expected workflow is:
 
 1. **Start with the spec, not the code**
-   - open `examples/jwt-workshop/specs/living-spec.md`
-   - make sure the Coordinator's plan matches the track goal
-2. **Keep scope inside the JWT workshop folder**
-   - use `examples/jwt-workshop/`
-   - focus implementation work in `examples/jwt-workshop/starter-api/`
-3. **Use Intent to plan before changing code**
-   - let the Coordinator draft or refine the spec
-   - only then move into implementation
-4. **Use the repo artifacts as context**
-   - spec
-   - handoff prompt
-   - isolated-workspace exercise
-   - context exercise
-   - wave plan
-   - PR summary
-5. **Review generated diffs before staging or merging**
-   - inspect changes in Intent's Changes view
-   - stage only what belongs to the workshop task
+
+- open `examples/jwt-workshop/specs/living-spec.md`
+- make sure the Coordinator's plan matches the track goal
+
+1. **Keep scope inside the JWT workshop folder**
+
+- use `examples/jwt-workshop/`
+- focus implementation work in `examples/jwt-workshop/starter-api/`
+
+1. **Use Intent to plan before changing code**
+
+- let the Coordinator draft or refine the spec
+- only then move into implementation
+
+1. **Use the repo artifacts as context**
+
+- spec
+- handoff prompt
+- isolated-workspace exercise
+- context exercise
+- wave plan
+- PR summary
+
+1. **Review generated diffs before staging or merging**
+
+- inspect changes in Intent's Changes view
+- stage only what belongs to the workshop task
 
 ## Step 6: Follow the JWT workshop path in this repo
 
@@ -188,13 +199,13 @@ auggie "Explain the auth routes, validation flow, and test coverage in this work
 
 | Folder | Purpose |
 | --- | --- |
-| `specs/` | Stable planning artifacts for auth work |
-| `prompts/` | Context-rich handoff prompts |
-| `workspaces/` | Isolation and execution practice |
-| `context/` | Questions to ask before editing |
-| `waves/` | Multi-step delivery planning |
-| `pr/` | Review-ready change summaries |
-| `starter-api/` | Runnable auth + shipment API with persistence, validation, and refresh-cookie session flow |
+| specs/ | Stable planning artifacts for auth work |
+| prompts/ | Context-rich handoff prompts |
+| workspaces/ | Isolation and execution practice |
+| context/ | Questions to ask before editing |
+| waves/ | Multi-step delivery planning |
+| pr/ | Review-ready change summaries |
+| starter-api/ | Runnable auth + shipment API with persistence, validation, and refresh-cookie session flow |
 
 ## If you want one good first prompt, use this
 
