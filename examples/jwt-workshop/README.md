@@ -1,6 +1,6 @@
 # JWT authentication workshop
 
-This guide explains exactly how a developer should use **Intent by Augment** with this JWT workshop track: install the tools, create a Space, start with the spec, and run the backend app locally.
+This guide explains exactly how a developer should use **Intent by Augment** with this JWT workshop track: create a Workspace, load the correct Spec, ask the Coordinator for a plan, and then run the backend app locally.
 
 ## What this track is for
 
@@ -60,9 +60,7 @@ cd augmentcode-intent
 
 If you use HTTPS instead of SSH, use the HTTPS clone URL for the same repository.
 
-## Step 4: Create a Space in Intent
-
-Intent's docs use the word **Space** for the isolated working environment. In this repo you may also see older references to isolated workspaces or worktrees; for practical purposes here, start in an Intent Space.
+## Step 4: Create a Workspace in Intent
 
 ### What to do in the app
 
@@ -76,15 +74,15 @@ Keep the work scoped to examples/jwt-workshop/starter-api.
 Create a spec-first plan before implementation.
 ```
 
-3. Click **Create space**.
-4. In the Space form, use settings like these:
+3. Create a new **Workspace**.
+4. In the Workspace setup form, use settings like these:
    - **Name:** `JWT workshop`
-   - **Location:** choose a local parent folder where you keep Intent spaces
+   - **Location:** choose a local parent folder where you keep Intent workspaces
    - **Git repository:** select this cloned repository
    - **Description:** `JWT auth workshop backend practice`
 5. Confirm creation.
 
-### What you should see after the Space opens
+### What you should see after the Workspace opens
 
 According to the official Intent quickstart, your first session should open with:
 
@@ -92,13 +90,13 @@ According to the official Intent quickstart, your first session should open with
 - **Coordinator** in the center
 - **Spec** on the right
 
-Intent also creates an isolated git branch/worktree for the Space so you can work without touching your main branch directly.
+Intent also creates an isolated git branch/worktree for the Workspace so you can work without touching your main branch directly.
 
 ### What to do with the right-hand Spec panel
 
 If you have never used Intent before, think of the right-hand **Spec** panel as the written plan for the work. In this repository, that plan starts from the workshop spec file that already exists in the repo.
 
-Do this immediately after the Space opens:
+Do this immediately after the Workspace opens:
 
 1. In the Explorer, open `examples/jwt-workshop/specs/living-spec.md`.
 2. Read it once from top to bottom so you understand the goal of the workshop.
@@ -152,7 +150,7 @@ For this repository, here is exactly what you should do:
    - inspect the diffs file by file
    - stage only the changes that belong to the JWT workshop task
 
-### A good first Coordinator prompt after the Space opens
+### A good first Coordinator prompt after the Workspace opens
 
 Paste this into the center Coordinator panel after you have reviewed or pasted the Spec on the right:
 
@@ -221,12 +219,13 @@ cd examples/jwt-workshop/starter-api
 auggie "Explain the auth routes, validation flow, and test coverage in this workshop app before changing any code."
 ```
 
-## Current implementation state
+## Current implementation path
 
 - Stack: Node.js + TypeScript + Express + Prisma + SQLite
-- Runnable app: `starter-api/`
-- Verification commands: `npm run typecheck` and `npm test`
-- Current Wave 6/7 state: session inspection/revocation, server-side shipment filtering, shipment detail routes, and CI-ready verification
+- Current app: `starter-api/`
+- Start with: `starter-api/README.md`
+- Verify with: `npm run typecheck` and `npm test`
+- Wave 6/7 state: session inspection/revocation, server-side shipment filtering, shipment detail routes, and CI-ready verification
 
 ## Folder guide
 
